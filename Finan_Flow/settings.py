@@ -41,12 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Financia',
     'django.contrib.sites',
+    'accounts',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'crispy_bootstrap5',
+    'widget_tweaks',
+
 ]
 
 MIDDLEWARE = [
@@ -164,3 +167,8 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+ACCOUNT_FORMS = {
+    'login': 'accounts.forms.CustomLoginForm'
+}
