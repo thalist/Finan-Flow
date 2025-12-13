@@ -5,52 +5,68 @@
 
 
 
-
-{% block title %} Entrar no Finan Flow {% endblock %}
-
 {% block content %}
-<link rel="stylesheet" href="{% static '/css/style.css' %} ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Limelight&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="{% static 'css/style.css' %} ">
 <div class="tela_login">
-    <div class="login-container">
+    <div class="login-container rounded-4 shadow">
 
-        <h2>Entrar na sua conta</h2>
+        <div class="bem-vindo">
+            <h2>Bem-Vindo ao </h2>
+            <h2 class="serif">Finan Flow</h2>
+            <div class="registrar">
 
-        <form method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-
-            {{ form.non_field_errors }}
-
-            <div class="input-style ">
-                {{ form.login|add_class:"input-style" }}
+                <a href="{% url 'account_signup' %}">Registrar</a>
 
             </div>
 
-            <div class="input-style ">
-                {{ form.password|add_class:"input-style" }}
-
-
-            </div>
-
-            <button type="submit" class="entrar">Entrar</button>
-        </form>
-
-        <!-- ADICIONADO -->
-        <p class="registrar">
-            Não tem conta?
-            <a href="{% url 'account_signup' %}">Registrar</a>
-        </p>
-        <!-- FIM -->
-
-        <div class="divider">
-            <span>Ou continue com</span>
         </div>
 
-        <a href="{% provider_login_url 'google' process='login' %}">
-            <img src="/static/img/google.png" width="60">
+        <div class="login">
+            <img src="{% static 'img/logo.png' %}" width="70">
+            <h2>Entrar na sua conta</h2>
 
-        </a>
+            <form method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <div class="usuario">
+                    <label class="label-style" for="{{ form.login.id_for_label }}">
+                        {{ form.login.label }}
+                    </label>
+                    {{ form.login|add_class:"input-style" }}
+                </div>
+
+
+                <div class="senha">
+                    <label class="label-style" for="{{ form.password.id_for_label }}">
+                        {{ form.password.label }}
+                    </label>
+                    {{ form.password|add_class:"input-style" }}
+                </div>
+
+                <button type="submit" class="entrar">Entrar</button>
+            </form>
+
+            <!-- ADICIONADO -->
+
+            <!-- FIM -->
+
+            <div class="divider">
+                <span>Ou continue com</span>
+            </div>
+
+            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark botao-google-link">
+                <img src="{% static 'img/google.png' %}" width="18" class=botao-google">
+                <span class="texto-google">Entrar com Google</span>
+            </a>
+        </div>
 
     </div>
 </div>

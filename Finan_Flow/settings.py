@@ -69,7 +69,7 @@ ROOT_URLCONF = 'Finan_Flow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,10 +159,30 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 ACCOUNT_LOGIN_REDIRECT_URL = '/dashboard/'
+
+LOGIN_REDIRECT_URL = '/dashboard/'
+
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
 SOCIALACCOUNT_AUTO_SIGNUP = True
+
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_USERNAME_REQUIRED = True
+
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -171,4 +191,8 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ACCOUNT_FORMS = {
     'login': 'accounts.forms.CustomLoginForm'
+}
+
+ACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomSignupForm'
 }

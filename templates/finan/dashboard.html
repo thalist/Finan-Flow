@@ -8,12 +8,12 @@
     <h3 class="fw-bold">Dashboard</h3>
 
     <div class="botoes">
-        <button class="btn btn-dashboard px-4" id="btnNovaCategoria" data-bs-toggle="modal"
+        <button class="btn bg-primary botoes-dashboard px-4" id="btnNovaCategoria" data-bs-toggle="modal"
             data-bs-target="#modalCategoria">
             + Nova Categoria
         </button>
 
-        <button class="btn btn-dashboard" data-bs-toggle="modal" data-bs-target="#modalTransacao">
+        <button class="btn bg-primary botoes-dashboard" data-bs-toggle="modal" data-bs-target="#modalTransacao">
             + Nova Transação
         </button>
     </div>
@@ -34,28 +34,33 @@
     </div>
 
     <!-- RECEITAS -->
-    <div class="receitas col-md-4">
-        <div class="card-custom bg-white p-4 h-75">
-            <div>
-                <img src="{% static 'img/trending-up.png' %}" width="26" class="me-2" alt="">
-                <span class="fw-semibold text-dark">Receitas</span>
-            </div>
 
-            <h3 class="fw-bold mb-0">R$ 7.050,00</h3>
-            <p>Este mês</p>
+    <div class="receitas col-md-4" id="">
+        <div class="card-custom bg-white p-4 h-75">
+            <a href="{% url 'receitas' %}" class="text-decoration-none">
+                <div>
+                    <img src="{% static 'img/trending-up.png' %}" width="26" class="me-2" alt="">
+                    <span class="fw-semibold text-dark">Receitas</span>
+                </div>
+
+                <h3 class="fw-bold mb-0">R$ 7.050,00</h3>
+                <p class="text-dark">Este mês</p>
+            </a>
         </div>
     </div>
 
     <!-- DESPESAS -->
-    <div class="col-md-4">
+    <div class="receitas col-md-4" id="">
         <div class="card-custom bg-white p-4 h-75">
-            <div>
-                <img src="{% static 'img/trending-down.png' %}" width="26" class="me-2" alt="">
-                <span class="fw-semibold text-dark">Despesas</span>
-            </div>
+            <a href="{% url 'despesas' %}" class="text-decoration-none">
+                <div>
+                    <img src="{% static 'img/trending-down.png' %}" width="26" class="me-2" alt="">
+                    <span class="fw-semibold text-dark">Despesas</span>
+                </div>
 
-            <h3 class="fw-bold text-danger mb-0">R$ 3.490,40</h3>
-            <p>Este mês</p>
+                <h3 class="fw-bold text-danger mb-0">R$ 3.490,00</h3>
+                <p class="text-dark">Este mês</p>
+            </a>
         </div>
     </div>
 
@@ -142,60 +147,35 @@
                 </div>
             </div>
 
-            <span class="text-danger fw-bold">- R$ 500,00</span>
-        </div>
-
-
-
-        <div class="list border-bottom d-flex justify-content-between align-items-center py-3">
-            <div class="d-flex align-items-center">
-                <img class="transacao-icone me-3" src="{% static 'img/utensils-crossed.png' %}" alt="">
-                <div class="lh-1">
-                    <strong>Restaurante</strong><br>
-                    <small class="text-muted">Alimentação • 28 dez</small>
-
-                </div>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-danger fw-bold">- R$ 500,00</span>
+                <button class="btn btn-sm"><img src="{% static 'img/square-pen.png' %}" alt=""></button>
+                <button class="btn btn-sm"><img src="{% static 'img/trash-2.png' %}" alt=""></button>
             </div>
-            <span class="text-danger fw-bold">- R$ 100,00</span>
         </div>
 
-        <div class="list border-bottom d-flex justify-content-between align-items-center py-3">
-            <div class="d-flex align-items-center">
-                <img class="transacao-icone me-3" src="{% static 'img/graduation-cap.png' %}" alt="">
-                <div class="lh-1">
-                    <strong>Curso online</strong><br>
-                    <small class="text-muted">Educação • 28 dez</small>
 
-                </div>
-            </div>
-            <span class="text-danger fw-bold">- R$ 180,00</span>
-        </div>
 
-        <div class="list d-flex justify-content-between align-items-center py-3">
-            <div class="d-flex align-items-center">
-                <img class="transacao-icone me-3" src="{% static 'img/laptop.png' %}" alt="">
-                <div class="lh-1">
-                    <strong>Projeto freelance</strong><br>
-                    <small class="text-muted">Freelance • 28 dez</small>
 
-                </div>
-            </div>
-            <span class="text-success fw-bold">+ R$ 1.200,00</span>
-        </div>
+
+
     </div>
+
+
 </div>
-</div>
+
+
 
 <div class="modal fade" id="modalTransacao" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 rounded-4">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content nova-transação p-3 rounded-4">
 
             <div class="modal-header border-0">
                 <h5 class="modal-title fw-bold">Nova Transação</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body ">
 
                 <!-- Botões Receita / Despesa -->
                 <div class="d-flex justify-content-between mb-3">
@@ -244,7 +224,7 @@
 <!-- MODAL: Nova Categoria -->
 <div class="modal fade" id="modalCategoria" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content ">
 
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title fw-bold">Nova Categoria</h5>

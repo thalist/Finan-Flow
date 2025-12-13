@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- TOPO -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold d-flex align-items-center gap-2">
+            <img src="{% static 'img/tag.png' %}" width="28">
+            <span>Categorias</span>
+        </h4>
+
+        <a href="#" class="btn btn-primary rounded-pill px-4">
+            + Nova Categoria
+        </a>
+    </div>
+
+    <!-- CARD -->
+    <div class="card card-categorias p-4">
+
+        <h6 class="fw-semibold mb-3">Todas as Categorias</h6>
+        <hr>
+
+        <!-- ITEM -->
+        <div class="categoria-item">
+            <div class="d-flex align-items-center gap-3">
+                <img src="{% static 'img/laptop.png' %}" width="22">
+                <span>Freelance</span>
+            </div>
+
+            <div class="acoes">
+                <button class="btn btn-sm"><img src="{% static 'img/square-pen.png' %}" alt=""></button>
+                <button class="btn btn-sm"><img src="{% static 'img/trash-2.png' %}" alt=""></button>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<script src="{% static 'js/categorias.js' %}"></script>
+{% endblock %}

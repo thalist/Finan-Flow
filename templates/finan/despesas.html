@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %} Receitas {% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- TÍTULO -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold text-dark">
+        <img src="{% static 'img/trending-down.png' %}" width="28">
+        Despesas
+    </h3>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary">+ Nova Transação</button>
+        <button class="btn btn-primary">+ Nova Categoria</button>
+        <button class="btn btn-red">+ Nova Receita</button>
+    </div>
+</div>
+
+<!-- CARD TOTAL -->
+<div class="receitas col-md-4" id="">
+    <div class="card-custom bg-white p-4 h-75">
+
+        <div>
+            <img src="{% static 'img/trending-down.png' %}" width="26" class="me-2" alt="">
+            <span class="fw-semibold text-dark">Despesas</span>
+        </div>
+
+        <h3 class="fw-bold text-danger mb-0">R$ 2.050,00</h3>
+        <p class="text-dark">Este mês</p>
+
+    </div>
+</div>
+
+<!-- SAIDAS -->
+<div class="card p-4 mb-4 rounded-4">
+    <h5 class="fw-semibold mb-3">Saidas</h5>
+    <hr>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <img src="{% static 'img/shopping-bag.png' %}" width="32" class="me-3">
+            <div>
+                <strong>Roupas</strong><br>
+                <small class="text-muted">Compras • 28 dez</small>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-danger fw-bold">- R$ 500,00</span>
+            <button class="btn  btn-sm"><img src="{% static 'img/square-pen.png' %}" alt=""></button>
+            <button class="btn  btn-sm"><img src="{% static 'img/trash-2.png' %}" alt=""></button>
+        </div>
+    </div>
+</div>
+
+<!-- GRÁFICOS -->
+<div class="row g-4">
+
+    <!-- EVOLUÇÃO -->
+    <div class="col-md-6">
+        <div class="card p-4 rounded-4">
+            <canvas id="graficoDespesasLinha"></canvas>
+        </div>
+    </div>
+
+    <!-- DESPESAS POR CATEGORIA -->
+    <div class="col-md-6 ">
+        <div class="p-4 ps-5 rounded-4 despesas_categoria">
+            <h6 class="fw-semibold mb-3" style="font-size:24px;">Despesas por Categoria</h6>
+            <div class="row">
+                <div class="col-5 d-flex justify-content-center">
+                    <canvas id="graficoDespesasCategoria" width="180" height="180"></canvas>
+                </div>
+                <div class="col-7 small">
+                    <ul class="lista_categoria list-unstyled">
+
+                        <li class="d-flex justify-content-between mb-5">
+                            <span class="d-flex align-items-center">
+                                <span class="dot me-2" style="background:#0C1E66;"></span> Moradia
+                            </span>
+                            <strong>R$ 1.800,00 <small class="text-muted">(51.6%)</small></strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between mb-5">
+                            <span class="d-flex align-items-center">
+                                <span class="dot me-2" style="background:#FF4B3E;"></span> Alimentação
+                            </span>
+                            <strong>R$ 607,55 <small class="text-muted">(17.4%)</small></strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between mb-5">
+                            <span class="d-flex align-items-center">
+                                <span class="dot me-2" style="background:#DA13B8;"></span> Compras
+                            </span>
+                            <strong>R$ 320,00 <small class="text-muted">(9.2%)</small></strong>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="{% static 'js/despesas.js' %}"></script>
+
+{% endblock %}

@@ -3,6 +3,102 @@ body {
 }
 
 
+footer {
+    text-align: center;
+}
+
+/*DROPDOWN CLARO*/
+.dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #000;
+}
+
+
+body.dark-mode {
+    background: #141414 !important;
+}
+
+/*DROPDOWN ESCURO*/
+body.dark-mode .dropdown-menu {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode .dropdown-item {
+    color: #fff !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #3a3a3a !important;
+}
+
+body.dark-mode .dropdown-divider {
+    border-color: #555 !important;
+}
+
+body.dark-mode .dropdown-menu .text-muted {
+    color: #ccc !important;
+}
+
+/*NAVBAR E FOOTER */
+body.dark-mode .navbar {
+    background-color: #141414 !important;
+    border-bottom: 1px solid #555;
+
+
+}
+
+/*LINKS MENU*/
+.dark-mode .nav-link {
+    color: #fff !important;
+}
+
+/*CARDS*/
+.dark-mode .bg-white,
+.dark-mode .card-custom,
+.dark-mode .evolucao,
+.dark-mode .despesas_categoria,
+.dark-mode .list {
+    background-color: #2b2b2b !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+
+/* Texto geral */
+.dark-mode .text-muted {
+    color: #ccc !important;
+}
+
+.dark-mode h3 {
+    color: white;
+}
+
+.dark-mode h6 {
+    color: white;
+}
+
+.dark-mode strong,
+.dark-mode span {
+    color: #fff !important;
+}
+
+/* Listas */
+.dark-mode .list-group .list {
+    background-color: #2b2b2b !important;
+    border-bottom: 1px solid #444;
+}
+
+.dark-mode .nova-transação {
+    background-color: #141414;
+    color: white;
+}
+
+.dark-mode .modal-content {
+    background-color: #141414;
+    color: white;
+}
+
 .container-fluid {
     margin-right: 1rem;
     margin-left: 1rem;
@@ -14,6 +110,7 @@ body {
 
 .navbar {
     background-color: #F5F5F5;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
 }
 
 .collapse {
@@ -35,12 +132,14 @@ body {
 
 /*Main*/
 /*HEADER + BOTÕES*/
-.botoes a {
-    background: #0384C5;
+
+
+.botoes-dashboard {
+    background-color: #11a1e9;
 }
 
-.btn-dashboard {
-    background-color: #0384C5;
+.botoes-dashboard:hover {
+    background-color: #11a1e9;
 }
 
 /* CARDS SUPERIORES  */
@@ -156,31 +255,66 @@ body {
     backdrop-filter: blur(6px);
 }
 
-/* Modal */
-#modalCategoria .modal-content {
-    border-radius: 14px;
-    padding: 20px 25px;
+
+
+
+
+
+
+/* TELA LOGIN */
+
+.tela_login {
+    background-color: #ddeef357;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+
+
 }
 
-/* Botão azul igual ao modelo */
-#modalCategoria .btn-primary {
-    background-color: #0A76D9;
-    border: none;
-}
+.bem-vindo {
 
-#modalCategoria .btn-primary:hover {
     background-color: #0869bf;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 12px 80px 80px 12px;
 }
 
+.bem-vindo h2 {
+    color: #e7e7e7;
+}
 
+.registrar {
 
+    border-radius: 12px;
+    border: 0.5px solid white;
+    padding: 12px;
+    margin-top: 1rem !important;
+}
 
+.registrar a {
+    text-decoration: none;
+    color: white;
+}
 
+.serif {
 
+    font-family: "Amarante", serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 .login-container {
-    width: 400px;
-    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 500px;
+    height: 450px;
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -189,21 +323,186 @@ body {
 
 .login-container h2 {
     margin-bottom: 20px;
+
+}
+
+.login {
+    padding: 30px;
+}
+
+.login h2 {
+
+    font-size: 24px;
+}
+
+.senha {
+    margin-top: 0.5rem;
+}
+
+.label-style {
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 5px;
+    display: block;
 }
 
 .input-style {
-    width: 250px !important;
+    width: 150px !important;
     height: 35px !important;
     border-radius: 10px;
     padding: 5px 10px;
+    border: 0px;
 }
 
 
 .entrar {
-    background-color: #0384C5 !important;
-    width: 300px;
+    background-color: #2284e7 !important;
+    width: 100px;
+    margin-top: 1rem !important;
+    border-radius: 10px !important;
+    border: 0px;
 }
 
-.registrar {
-    color: #0288d1 !important;
+
+.botao-google-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 36px;
+    padding: 0 14px;
+
+    text-decoration: none;
+}
+
+.texto-google {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+
+
+/*TELA RECEITAS */
+
+.card {
+    margin-top: 1rem;
+}
+
+
+.dark-mode img,
+.dark-mode p,
+.dark-mode h5 {
+    color: white;
+}
+
+
+
+.dark-mode .card {
+    background-color: #2b2b2b;
+}
+
+
+
+/*SIGNUP*/
+
+.signup {
+    background-color: #ddeef357;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+/* ===== FORM ALLAUTH ===== */
+
+
+form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.helptext ul {
+    font-size: 13px;
+    color: #6c757d;
+    padding-left: 18px;
+}
+
+.errorlist {
+    background: #ffe5e5;
+    color: #b02a37;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+
+.senha-label {
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-control {
+    border: 0px;
+    background-color: #E8F0FE;
+}
+
+
+/* CATEGORIA  */
+
+.card-categorias {
+    border-radius: 14px;
+    background: #fafdff;
+    border: 1px solid #e6f1ff;
+}
+
+/* Linha da categoria */
+.categoria-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.categoria-item:last-child {
+    border-bottom: none;
+}
+
+/* Ações */
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    border: none;
+    background: #f0f0f0;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    background: #e0e0e0;
+}
+
+
+.dark-mode span {
+    color: white;
+}
+
+.dark-mode .card-categorias {
+    border: 0px;
 }

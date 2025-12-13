@@ -1,4 +1,5 @@
 from allauth.account.forms import LoginForm
+from allauth.account.forms import SignupForm
 
 
 class CustomLoginForm(LoginForm):
@@ -9,3 +10,10 @@ class CustomLoginForm(LoginForm):
             field.widget.attrs.update({
                 'class': 'input-style'
             })
+
+
+class CustomSignupForm(SignupForm):
+
+    def save(self, request):
+        user = super().save(request)
+        return user
