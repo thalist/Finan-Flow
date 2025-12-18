@@ -16,29 +16,30 @@
 
     <div class="card p-4">
         <form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next_url }}">
-    
-    <div class="mb-3">
-        <label for="id_nome" class="form-label">Nome da Categoria</label>
-        {{ form.nome }}
-        {% if form.nome.errors %}
-            <div class="text-danger small">{{ form.nome.errors }}</div>
-        {% endif %}
-    </div>
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next_url }}">
 
-    <div class="mb-3">
-        <label for="id_tipo" class="form-label">Tipo</label>
-        {{ form.tipo }}
-        {% if form.tipo.errors %}
-            <div class="text-danger small">{{ form.tipo.errors }}</div>
-        {% endif %}
-    </div>
+            <div class="mb-3">
+                <label for="id_nome" class=" nome-categoria form-label">Nome da Categoria</label>
+                {{ form.nome }}
+                {% if form.nome.errors %}
+                <div class="text-danger small">{{ form.nome.errors }}</div>
+                {% endif %}
+            </div>
 
-    <button type="submit" class="btn btn-primary">Salvar</button>
-    <a href="{{ next_url }}" class="btn btn-secondary">Cancelar</a>
-</form>
+            <div class="mb-3">
+                <label for="id_tipo" class="nome-categoria form-label">Tipo</label>
+                {{ form.tipo }}
+                {% if form.tipo.errors %}
+                <div class="text-danger small">{{ form.tipo.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="{{ next_url }}" class="btn btn-secondary">Cancelar</a>
+        </form>
     </div>
 
 </div>
+
 {% endblock %}

@@ -6,14 +6,14 @@
 <!-- HEADER + BOTÕES -->
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold">Dashboard</h3>
-    <div class="botoes">
+    <!-- <div class="botoes">
         <button class="btn bg-primary botoes-dashboard px-4" data-bs-toggle="modal" data-bs-target="#modalCategoria">
             + Nova Categoria
         </button>
         <button class="btn bg-primary botoes-dashboard" data-bs-toggle="modal" data-bs-target="#modalTransacao">
             + Nova Transação
         </button>
-    </div>
+    </div>-->
 </div>
 
 <!-- CARDS SUPERIORES -->
@@ -112,17 +112,17 @@
 
     <div class="list-group">
         {% for t in transacoes_recentes %}
-            <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
-                <div>
-                    <strong>{{ t.descricao }}</strong><br>
-                    <small class="text-muted">{{ t.categoria.nome }} • {{ t.data|date:"d M" }}</small>
-                </div>
-                <h5 class="fw-bold {% if t.tipo == 'despesa' %}text-danger{% else %}text-success{% endif %} mb-0">
-                    R$ {{ t.valor|floatformat:2 }}
-                </h5>
+        <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+            <div>
+                <strong>{{ t.descricao }}</strong><br>
+                <small class="text-muted">{{ t.categoria.nome }} • {{ t.data|date:"d M" }}</small>
             </div>
+            <h5 class="fw-bold {% if t.tipo == 'despesa' %}text-danger{% else %}text-success{% endif %} mb-0">
+                R$ {{ t.valor|floatformat:2 }}
+            </h5>
+        </div>
         {% empty %}
-            <p>Nenhuma transação recente.</p>
+        <p>Nenhuma transação recente.</p>
         {% endfor %}
     </div>
 </div>
@@ -157,11 +157,11 @@
                 <div class="mb-3">
                     <label class="fw-semibold">Categoria</label>
                     <select class="form-select">
-    <option selected>Escolha uma categoria</option>
-    {% for cat in despesas_por_categoria.keys %}
-        <option>{{ cat }}</option>
-    {% endfor %}
-</select>
+                        <option selected>Escolha uma categoria</option>
+                        {% for cat in despesas_por_categoria.keys %}
+                        <option>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
 
                 </div>
 

@@ -628,3 +628,9 @@ body.dark-mode .valor-receita {
 body.dark-mode .valor-despesa {
     color: #f87171;
 }
+
+
+
+body.dark-mode .nome-categoria {
+    color: white;
+}
