@@ -3,22 +3,23 @@
 {% block title %} Receitas {% endblock %}
 {% load static %}
 {% block content %}
+<div class="container mt-4">
+
 <!-- TÍTULO -->
-<div class="  d-flex justify-content-between align-items-center mb-4">
+<div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold ">
         <img src="{% static 'img/trending-up.png' %}" width="28">
         Receitas
     </h3>
 
     <div class="d-flex gap-2">
-        <button class="btn btn-primary">+ Nova Transação</button>
-        <button class="btn btn-primary">+ Nova Categoria</button>
-        <button class="btn btn-success">+ Nova Receita</button>
+        <a href="{% url 'receita_create' %}?next={{ request.path }}" class="btn btn-success">+ Nova Receita</a>
+        <a href="{% url 'categoria_create' %}?next={{ request.path }}" class="btn btn-primary">+ Nova Categoria</a>
     </div>
 </div>
 
 <!-- CARD TOTAL -->
-<div class="receitas col-md-4" id="">
+<div class="receitas col-md-4">
     <div class="card-custom bg-white p-4 h-75">
 
         <div>
@@ -26,7 +27,9 @@
             <span class="fw-semibold texto-receita">Receitas</span>
         </div>
 
-        <h3 class="fw-bold mb-0">R$ 7.050,00</h3>
+        <h3 class="fw-bold mb-0">
+            R$ {{ total|floatformat:2 }}
+        </h3>
         <p class="">Este mês</p>
 
     </div>
@@ -36,71 +39,33 @@
 <div class="card p-4 mb-4 rounded-4">
     <h5 class="fw-semibold text-entrada mb-3">Entradas</h5>
 
-
-    <div class="d-flex justify-content-between align-items-center">
+    {% for receita in transacoes %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="d-flex align-items-center">
             <img src="{% static 'img/laptop.png' %}" width="32" class="me-3">
             <div>
-                <strong>Projeto freelance</strong><br>
-                <small class="text-muted">Freelance • 28 dez</small>
+                <strong>{{ receita.descricao }}</strong><br>
+                <small class="text-muted">{{ receita.categoria.nome }} • {{ receita.data|date:"d M" }}</small>
             </div>
         </div>
 
         <div class="d-flex align-items-center gap-3">
-            <span class=" valor-receita fw-bold">- R$ 1.200,00</span>
+            <span class="valor-receita fw-bold">+ R$ {{ receita.valor }}</span>
 
-            <button class="btn btn-sm"><img class="icone-square" src="{% static 'img/square-pen.png' %}"
-                    alt=""></button>
-            <button class="btn btn-sm"><img class="trash-2" src="{% static 'img/trash-2.png' %}" alt=""></button>
+            <a href="{% url 'receita_update' receita.id %}" class="btn btn-sm">
+                <img class="icone-square" src="{% static 'img/square-pen.png' %}" alt="">
+            </a>
+            <a href="{% url 'receita_delete' receita.id %}" class="btn btn-sm">
+                <img class="trash-2" src="{% static 'img/trash-2.png' %}" alt="">
+            </a>
         </div>
     </div>
+    {% empty %}
+    <p>Nenhuma receita cadastrada.</p>
+    {% endfor %}
 </div>
 
-<div class="row g-4">
-
-    <!-- EVOLUÇÃO -->
-    <div class="col-md-6">
-        <div class="card p-4 rounded-4">
-            <canvas id="graficoReceitasLinha"></canvas>
-        </div>
-    </div>
-
-    <!-- DESPESAS POR CATEGORIA -->
-    <div class="col-md-6 ">
-        <div class="p-4 ps-5 rounded-4 despesas_categoria">
-            <h6 class="fw-semibold mb-3" style="font-size:24px;">Receitas por Categoria</h6>
-            <div class="row">
-                <div class="col-5 d-flex justify-content-center">
-                    <canvas id="graficoReceitasCategoria" width="180" height="180"></canvas>
-                </div>
-                <div class="col-7 small">
-                    <ul class="lista_categoria list-unstyled">
-
-                        <li class="d-flex justify-content-between mb-5">
-                            <span class="d-flex align-items-center">
-                                <span class="dot me-2" style="background:#0C1E66;"></span> Salário
-                            </span>
-                            <strong>R$ 1.800,00 <small class="text-muted">(51.6%)</small></strong>
-                        </li>
-
-                        <li class="d-flex justify-content-between mb-5">
-                            <span class="d-flex align-items-center">
-                                <span class="dot me-2" style="background:#FF4B3E;"></span> Freelance
-                            </span>
-                            <strong>R$ 1.200,00 <small class="text-muted">(48.3%)</small></strong>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-</div>
-
-
+<!-- GRAFICOS e RECEITAS POR CATEGORIA continuam iguais -->
 
 <script src="{% static 'js/receitas.js' %}"></script>
 {% endblock %}

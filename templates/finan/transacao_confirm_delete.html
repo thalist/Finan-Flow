@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h4>{{ titulo }}</h4>
+    <p>Tem certeza que deseja excluir a receita "{{ receita.nome }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next_url }}">
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a href="{{ next_url }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

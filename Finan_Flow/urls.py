@@ -25,7 +25,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('receitas/', views.receitas, name='receitas'),
     path('despesas/', views.despesas, name='despesas'),
-    path('categorias/', views.categorias, name='categorias'),
+    path('categorias/', views.categoria_list, name='categorias'),
     path('dashboard/', finanflow, name='dashboard'),
 
 ]

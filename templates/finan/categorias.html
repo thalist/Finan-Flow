@@ -11,34 +11,62 @@
             <span class="text-entrada">Categorias</span>
         </h4>
 
-        <a href="#" class="btn btn-primary rounded-pill px-4">
+        <a href="{% url 'categoria_create' %}" class="btn btn-primary rounded-pill px-4">
             + Nova Categoria
         </a>
     </div>
 
-    <!-- CARD -->
-    <div class="card card-categorias p-4">
-
-        <h6 class="fw-semibold text-entrada mb-3">Todas as Categorias</h6>
-
-
-        <!-- ITEM -->
-        <div class="categoria-item">
-            <div class="d-flex align-items-center gap-3">
-                <img src="{% static 'img/laptop.png' %}" width="22">
-                <span class="text-entrada">Freelance</span>
-            </div>
-
-            <div class="acoes">
-                <button class="btn btn-sm"><img class="icone-square" src="{% static 'img/square-pen.png' %}"
-                        alt=""></button>
-                <button class="btn btn-sm"><img class="trash-2" src="{% static 'img/trash-2.png' %}" alt=""></button>
-            </div>
-        </div>
-
-
-
+    <!-- CARD RECEITAS -->
+    <div class="card card-categorias p-4 mb-4">
+        <h6 class="fw-semibold text-success mb-3">Receitas</h6>
+        {% if categorias_receita %}
+            {% for categoria in categorias_receita %}
+                <div class="categoria-item d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="{% static 'img/laptop.png' %}" width="22">
+                        <span class="text-entrada">{{ categoria.nome }}</span>
+                    </div>
+                    <div class="acoes">
+                        <a href="{% url 'categoria_update' categoria.id %}" class="btn btn-sm">
+                            <img class="icone-square" src="{% static 'img/square-pen.png' %}" alt="Editar">
+                        </a>
+                        <a href="{% url 'categoria_delete' categoria.id %}" class="btn btn-sm">
+                            <img class="trash-2" src="{% static 'img/trash-2.png' %}" alt="Excluir">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">Nenhuma categoria de receita cadastrada.</p>
+        {% endif %}
     </div>
+
+    <!-- CARD DESPESAS -->
+    <div class="card card-categorias p-4">
+        <h6 class="fw-semibold text-danger mb-3">Despesas</h6>
+        {% if categorias_despesa %}
+            {% for categoria in categorias_despesa %}
+                <div class="categoria-item d-flex justify-content-between align-items-center mb-2">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="{% static 'img/laptop.png' %}" width="22">
+                        <span class="text-entrada">{{ categoria.nome }}</span>
+                    </div>
+                    <div class="acoes">
+                        <a href="{% url 'categoria_update' categoria.id %}" class="btn btn-sm">
+                            <img class="icone-square" src="{% static 'img/square-pen.png' %}" alt="Editar">
+                        </a>
+                        <a href="{% url 'categoria_delete' categoria.id %}" class="btn btn-sm">
+                            <img class="trash-2" src="{% static 'img/trash-2.png' %}" alt="Excluir">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">Nenhuma categoria de despesa cadastrada.</p>
+        {% endif %}
+    </div>
+
 </div>
+
 <script src="{% static 'js/categorias.js' %}"></script>
 {% endblock %}
