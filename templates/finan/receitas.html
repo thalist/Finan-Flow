@@ -65,6 +65,48 @@
     {% endfor %}
 </div>
 
+<!-- GRÁFICOS
+ <div class="row g-4">
+
+    <div class="col-md-6">
+        <div class="card p-4 rounded-4">
+            <canvas id="graficoReceitasLinha" data-meses='{{ meses|safe }}' 
+        data-valores='{{ valores|safe }}'></canvas>
+        </div>
+    </div> -->
+<!--     -- RECEITAS POR CATEGORIA --
+    <div class="col-md-6">
+        <div class="cardp-4 ps-5 rounded-4 receitas_categoria">
+            <h6 class="fw-semibold mb-3" style="font-size:24px;">Receitas por Categoria</h6>
+            <div class="row">
+                <div class="col-5 d-flex justify-content-center">
+                    <canvas id="graficoReceitasCategoria" style="height: 250px;"  data-categorias='{{ categorias|safe }}' 
+        data-valores_categorias='{{ valores_categorias|safe }}' ></canvas>
+                </div>
+                <div class="col-7 small">
+                    <ul class="lista_categoria list-unstyled">
+                        {% for cat, valor in receitas_por_categoria.items %}
+                        <li class="d-flex justify-content-between mb-3">
+                            <span class="d-flex align-items-center">
+                                <span class="dot me-2 {{ valor.cor_class }}"></span>{{ cat }}
+                            </span>
+                            <strong>
+                                R$ {{ valor.valor|floatformat:2 }}
+                                <small class="text-muted">({{ valor.percent }}%)</small>
+                            </strong>
+                        </li>
+                        {% empty %}
+                        <p>Nenhuma receita registrada.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
 <!-- GRAFICOS e RECEITAS POR CATEGORIA continuam iguais -->
 
 <script src="{% static 'js/receitas.js' %}"></script>

@@ -1,5 +1,5 @@
-from .forms import DespesaForm
-from .models import Categoria, Despesa
+from .forms import DespesaForm, ReceitaForm, CategoriaForm
+from .models import Categoria, Despesa, Receita
 from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Categoria, Receita, Despesa
@@ -113,10 +113,17 @@ def finanflow(request):
 # View de receitas
 @login_required
 def receitas(request):
-    lista = Receita.objects.order_by('-data')
-    total = sum(r.valor for r in lista)
-    return render(request, 'finan/receitas.html', {'transacoes': lista, 'total': total})
+    transacoes = Receita.objects.order_by('-data')
+    total = sum(r.valor for r in transacoes)
+    receita_form = ReceitaForm()
+    categoria_form = CategoriaForm()
 
+    return render(request, 'finan/receitas.html', {
+        'transacoes': transacoes,
+        'total': total,
+        'receita_form': receita_form,
+        'categoria_form': categoria_form,
+    })
 
 def receita_create(request):
     if request.method == 'POST':
